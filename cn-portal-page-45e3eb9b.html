@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · ng体育 · 信息卡片</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f3f3f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: #1e1e24;
+            padding: 2.5rem 1.2rem;
+        }
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        /* hero 卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e8e8ec;
+            padding: 3.2rem 2.8rem;
+            margin-bottom: 2.8rem;
+            text-align: center;
+            transition: box-shadow 0.25s;
+        }
+        .hero-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+        }
+        .hero-card h1 {
+            font-size: 2.7rem;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .hero-card .sub {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 1.2rem;
+        }
+        .hero-card p {
+            max-width: 640px;
+            margin: 0 auto 1.4rem;
+            font-size: 1.06rem;
+            color: #374151;
+        }
+        .hero-card .badge {
+            display: inline-block;
+            background: #eef2f6;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #2b3a4a;
+            border: 1px solid #d6dce4;
+        }
+
+        /* 卡片网格 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.4rem;
+        }
+        .info-card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e4e4ea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2rem 1.8rem 2.2rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .info-card:hover {
+            border-color: #cdd2da;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+        }
+        .info-card .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+        .info-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.6rem;
+        }
+        .info-card p, .info-card li {
+            color: #3b3f4c;
+            font-size: 0.98rem;
+        }
+        .info-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+        .info-card li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* 第三行 - 大卡片 */
+        .wide-card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e4e4ea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2.4rem 2.4rem;
+            margin-bottom: 2rem;
+        }
+        .wide-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .wide-card .faq-item {
+            margin: 1.2rem 0 1.6rem;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #2b3a4a;
+            margin-bottom: 0.2rem;
+        }
+        .faq-item p {
+            color: #3f4452;
+            font-size: 0.97rem;
+        }
+        .link-sentence {
+            background: #f7f8fa;
+            padding: 1.2rem 1.8rem;
+            border-radius: 20px;
+            border-left: 4px solid #a6b3c4;
+            margin: 1.6rem 0 0.2rem;
+            font-size: 1.02rem;
+        }
+        .link-sentence a {
+            color: #1e3a5f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bcc6d4;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .link-sentence a:hover {
+            color: #0b1f33;
+            border-bottom-color: #1e3a5f;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e2e8;
+            margin: 1.8rem 0 0.8rem;
+        }
+        .footnote {
+            text-align: center;
+            color: #7b7f8c;
+            font-size: 0.9rem;
+            padding: 1.6rem 0 0.6rem;
+        }
+
+        @media (max-width: 680px) {
+            body { padding: 1.5rem 1rem; }
+            .hero-card { padding: 2.2rem 1.2rem; }
+            .hero-card h1 { font-size: 2.1rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1.5rem; }
+            .wide-card { padding: 1.8rem 1.2rem; }
+            .link-sentence { padding: 1rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 卡片: 再次访问·收藏·持续关注 -->
+    <div class="hero-card">
+        <div class="badge">✦ 再访 · 常来 · 收藏</div>
+        <h1>熟悉的角落，总有新发现</h1>
+        <p class="sub">隔一阵子回来，界面、内容、节奏都会有些不同。</p>
+        <p>有些网站值得放进收藏夹，不是因为上面的信息不会变，而是每次打开都多了一点从容。<br>
+        把 <strong>ng体育</strong> 加入书签，之后想看的时候就不必从头翻找了。<br>
+        无论几周还是几个月，你都能快速回到这个汇集信息与动态的地方。</p>
+    </div>
+
+    <!-- 两列信息卡片：用途卡片 + 适合人群 -->
+    <div class="grid-2col">
+        <!-- 用途卡片 -->
+        <div class="info-card">
+            <span class="card-icon">📋</span>
+            <h2>用途卡片 · 日常与偶尔</h2>
+            <p>你可以在这里找到：</p>
+            <ul>
+                <li>不同主题的归纳与简讯</li>
+                <li>常见疑问的集中解答</li>
+                <li>更新记录与版本说明</li>
+                <li>其他访问者留下的讨论线索</li>
+            </ul>
+            <p style="margin-top: 0.8rem;">不需要频繁刷新，但每次回来总有一些新的段落值得过目。页面保持简洁，不堆砌模块，适合慢慢浏览。</p>
+        </div>
+        <!-- 适合人群 -->
+        <div class="info-card">
+            <span class="card-icon">👥</span>
+            <h2>适合什么样的人</h2>
+            <p>这个页面并不是为所有人设计的，但下面几类朋友可能会觉得顺手：</p>
+            <ul>
+                <li><strong>回头客</strong> —— 之前来过，想留存一个稳定的入口</li>
+                <li><strong>轻度关注者</strong> —— 不需要每天看，但希望偶尔了解动态</li>
+                <li><strong>信息整理党</strong> —— 喜欢卡片式分区，快速找到内容方向</li>
+                <li><strong>偏好安静浏览的人</strong> —— 没有弹窗和紧迫的推送感</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 宽卡片：自然链接段落 + FAQ摘要 -->
+    <div class="wide-card">
+        <h2>📌 常回来看看 · 自然链接</h2>
+        <div class="link-sentence">
+            如果你还没收藏这个站点，不妨现在就把 
+            <a href="https://cn-portal-ngsports.com">ng体育</a> 
+            加入书签栏。下次再想起的时候，不需要依赖搜索记录，直接点开就能看到最新的内容分区。
+        </div>
+        <div class="faq-item">
+            <strong>▸ 页面内容会频繁变化吗？</strong>
+            <p>不会。更新以周或月为节奏，每次调整都会保留信息卡片的基本结构。你可以把这里当作一个节奏舒缓的内容站，偶尔回来看一眼就好。</p>
+        </div>
+        <div class="faq-item">
+            <strong>▸ 收藏后还需要记住什么？</strong>
+            <p>只需要记得你曾经把这个页面加入过收藏夹。其他的部分，比如卡片分类、常见问题、段落主题，每次回来都能快速理解。站点没有复杂的会员系统或强制登录。</p>
+        </div>
+        <hr>
+        <div class="link-sentence" style="border-left-color: #a8b8c9;">
+            另外，如果你恰好想推荐给朋友，可以直接把 
+            <a href="https://cn-portal-ngsports.com">ng体育</a> 
+            这个链接分享过去。对方打开后看到的页面，和你日常浏览的版本是一致的——不需要解释入口在哪。
+        </div>
+    </div>
+
+    <!-- 页面底部的轻提示 -->
+    <div class="footnote">
+        <span>— 卡片式信息页 · 适合收藏与回头浏览 —</span>
+    </div>
+
+</div>
+</body>
+</html>
